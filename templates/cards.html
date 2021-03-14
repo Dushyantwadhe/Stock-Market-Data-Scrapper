@@ -1,0 +1,163 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en" dir="ltr">
+  <head>
+    <meta charset="utf-8">
+    <title>Data Cards</title>
+    <link rel="stylesheet" type="text/css" href="{% static 'cards.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'cards2.css' %}">
+  </head>
+  <body>
+
+      <div class="">
+        <nav class="navbar">
+  <div class="container">
+
+    <div class="navbar-header">
+      <button class="navbar-toggler" data-toggle="open-navbar1">
+        <span></span>
+        <span></span>
+        <span></span>
+      </button>
+      <a href="#">
+        <h4>Stock<span>Cards</span></h4>
+
+      </a>
+    </div>
+
+    <div class="navbar-menu" id="open-navbar1">
+      <ul class="navbar-nav">
+        <li class="active"><a href="#">Home</a></li>
+        <li class="navbar-dropdown">
+          <a href="#" class="dropdown-toggler" data-dropdown="my-dropdown-id">
+            Categories <i class="fa fa-angle-down"></i>
+          </a>
+          <ul class="dropdown" id="my-dropdown-id">
+            <li><a href="#">Actions</a></li>
+            <li><a href="#">Something else here</a></li>
+            <li class="separator"></li>
+            <li><a href="#">Seprated link</a></li>
+            <li class="separator"></li>
+            <li><a href="#">One more seprated link.</a></li>
+          </ul>
+        </li>
+        <li class="navbar-dropdown">
+          <a href="#" class="dropdown-toggler" data-dropdown="blog">
+            Blog <i class="fa fa-angle-down"></i>
+          </a>
+          <ul class="dropdown" id="blog">
+            <li><a href="#">Some category</a></li>
+            <li><a href="#">Some another category</a></li>
+            <li class="separator"></li>
+            <li><a href="#">Seprated link</a></li>
+            <li class="separator"></li>
+            <li><a href="#">One more seprated link.</a></li>
+          </ul>
+        </li>
+        <li><a href="#">About</a></li>
+        <li><a href="#">Contact</a></li>
+        <li><a href="#">Signin</a></li>
+      </ul>
+    </div>
+  </div>
+</nav>
+      </div>
+      <!-- <b>{{stock_val}}</b> -->
+    <div class="section">
+    <br><br><br>
+    <div class="data-card is-hoverable">
+      <div class="data-card__val" >
+        459.10
+      </div>
+      <div class="data-card__label">
+        BPCL
+      </div>
+      <div class="data-card__color is-green"></div>
+    </div>
+    <div class="data-card is-hoverable">
+      <div class="data-card__val" >
+        101.4
+      </div>
+      <div class="data-card__label">
+        IOC
+      </div>
+      <div class="data-card__color is-green"></div>
+    </div>
+    <div class="data-card is-hoverable">
+      <div class="data-card__val" >
+        220.00
+      </div>
+      <div class="data-card__label">
+        POWERGRID
+      </div>
+      <div class="data-card__color is-green"></div>
+    </div>
+    <div class="data-card is-hoverable">
+      <div class="data-card__val" >
+        417.75
+      </div>
+      <div class="data-card__label">
+        JSWSTEEL
+      </div>
+      <div class="data-card__color is-green"></div>
+    </div>
+
+      <div class="data-card is-hoverable">
+        <div class="data-card__val">
+          143.00
+        </div>
+        <div class="data-card__label">
+          TITAN
+
+        </div>
+        <div class="data-card__color is-red"></div>
+      </div>
+      <div class="data-card is-hoverable">
+        <div class="data-card__val">
+          115.20
+        </div>
+        <div class="data-card__label">
+          ONGC
+
+        </div>
+        <div class="data-card__color is-red"></div>
+      </div>
+    </div>
+
+
+
+   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+     <script type="text/javascript">
+
+      var token = '{{csrf_token}}';
+      function test(){
+        $.ajax({
+        headers: { "X-CSRFToken": token },
+        type: 'POST',
+        url: '/create_cards/',
+        enctype: 'multipart/form-data',
+        success: function(data){
+          // console.log(data);
+          }
+        });
+       }
+       // function receive_data(){
+       //   $.ajax({
+       //   headers: { "X-CSRFToken": token },
+       //   type: 'POST',
+       //   url: '/cards_val/',
+       //   enctype: 'multipart/form-data',
+       //   success: function(data){
+       //     // console.log(data);
+       //     }
+       //   });
+       //  }
+       setInterval(function(){ test();}, 60000); // test function is called every minute
+
+    </script>
+    <script src="{% static 'cards.js' %}"></script>
+
+
+    <!-- <button type="button" onclick="test()">this is test button</button> -->
+  </body>
+</html>
